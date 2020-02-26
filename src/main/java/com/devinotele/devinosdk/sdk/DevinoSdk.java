@@ -2,13 +2,15 @@ package com.devinotele.devinosdk.sdk;
 
 import android.app.Activity;
 import android.content.Context;
-import android.location.Location;
 import android.net.Uri;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.gson.JsonObject;
 
 import java.util.HashMap;
+
+import io.reactivex.Observable;
 
 /**
 * Main library class.
@@ -162,6 +164,15 @@ public class DevinoSdk {
     public void activateSubscription(Boolean subscribed) {
         ChangeSubscriptionUseCase useCase = new ChangeSubscriptionUseCase(instance.hp, logsCallback);
         useCase.run(subscribed);
+    }
+
+    /**
+     * Check subscription status
+     * @return Observable<JsonObject> subscription status in success json { "result": boolean }
+     */
+    public Observable<JsonObject> checkSubscription() {
+        SubscriptionStatusUseCase useCase = new SubscriptionStatusUseCase(instance.hp, logsCallback);
+        return useCase.run();
     }
 
     /**

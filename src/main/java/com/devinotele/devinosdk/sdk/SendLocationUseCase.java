@@ -1,7 +1,7 @@
 package com.devinotele.devinosdk.sdk;
 
 
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import retrofit2.HttpException;
 
 
 class SendLocationUseCase extends BaseUC {

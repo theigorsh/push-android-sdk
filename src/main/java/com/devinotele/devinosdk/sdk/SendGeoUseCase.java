@@ -1,7 +1,7 @@
 package com.devinotele.devinosdk.sdk;
 
 
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import retrofit2.HttpException;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

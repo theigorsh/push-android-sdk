@@ -38,11 +38,16 @@ class RetrofitHelper {
         return devinoApi.registerUser(token, body);
     }
 
-
     Single<JsonObject> changeSubscription (Boolean subscribed) {
         HashMap<String, Object> body = getGenericBody();
         body.put("subscribed", subscribed);
         return devinoApi.subscription(token, body);
+    }
+
+    Single<JsonObject> getSubscriptionStatus() {
+        HashMap<String, Object> body = new HashMap<>();
+        body.put("applicationId", applicationId);
+        return devinoApi.getSubscriptionStatus(token, body);
     }
 
     Single<JsonObject> appStarted(Boolean subscribed, String appVersion) {
@@ -99,6 +104,4 @@ class RetrofitHelper {
         body.put("language", Locale.getDefault().getISO3Language().substring(0, 2));
         return body;
     }
-
-
 }

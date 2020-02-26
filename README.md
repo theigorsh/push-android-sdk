@@ -181,4 +181,21 @@ It is highly recommended that you use sdk constants for message status
 DevinoSdk.getInstance().pushEvent(pushId, DevinoSdk.PushStatus.DELIVERED, null);
 ```
 
+### Change notification subscription
+
+True by default
+```
+SevenTechSdk.getInstance().activateSubscription(true);
+```
+
+### Check notification subscription status
+Use rxJava and get subscription status in success json { "result": boolean }
+```
+SevenTechSdk.getInstance().checkSubscription()
+    .subscribe(
+        json -> //do what you need,
+        throwable -> //do what you need
+    )
+```
+
 [![](https://jitpack.io/v/devinotelecom/push-android-sdk.svg)](https://jitpack.io/#devinotelecom/push-android-sdk)

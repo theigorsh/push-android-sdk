@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import io.reactivex.Single;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -28,7 +29,9 @@ interface DevinoApi {
     @POST("users/{pushToken}/subscription")
     Single<JsonObject> subscription(@Path("pushToken") String pushToken, @Body HashMap<String, Object> body);
 
+    @GET("users/{pushToken}/subscription/status")
+    Single<JsonObject> getSubscriptionStatus(String token, HashMap<String, Object> body);
+
     @POST("messages/events")
     Single<JsonObject> pushEvent(@Body HashMap<String, Object> body);
-
 }

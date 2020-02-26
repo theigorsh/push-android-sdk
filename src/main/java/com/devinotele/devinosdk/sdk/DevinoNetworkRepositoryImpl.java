@@ -1,7 +1,7 @@
 package com.devinotele.devinosdk.sdk;
 
 import com.google.gson.JsonObject;
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import retrofit2.HttpException;
 
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -66,6 +66,11 @@ class DevinoNetworkRepositoryImpl implements DevinoNetworkRepository {
     @Override
     public Observable<JsonObject> changeSubscription(Boolean subscribed) {
         return retryOnHttpError(retrofitHelper.changeSubscription(subscribed));
+    }
+
+    @Override
+    public Observable<JsonObject> getSubscriptionStatus() {
+        return retryOnHttpError(retrofitHelper.getSubscriptionStatus());
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.devinotele.devinosdk.sdk;
 
 import android.annotation.SuppressLint;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import retrofit2.HttpException;
 
 import java.util.HashMap;
 
