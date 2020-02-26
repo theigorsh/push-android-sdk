@@ -1,6 +1,5 @@
 package com.devinotele.devinosdk.sdk;
 
-
 import com.google.gson.JsonObject;
 
 import java.util.HashMap;
@@ -11,6 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 interface DevinoApi {
 
@@ -30,7 +30,7 @@ interface DevinoApi {
     Single<JsonObject> subscription(@Path("pushToken") String pushToken, @Body HashMap<String, Object> body);
 
     @GET("users/{pushToken}/subscription/status")
-    Single<JsonObject> getSubscriptionStatus(String token, HashMap<String, Object> body);
+    Single<JsonObject> getSubscriptionStatus(@Path("pushToken") String token, @Query("applicationId") String applicationId);
 
     @POST("messages/events")
     Single<JsonObject> pushEvent(@Body HashMap<String, Object> body);
