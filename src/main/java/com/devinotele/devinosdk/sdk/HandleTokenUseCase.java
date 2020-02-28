@@ -4,7 +4,7 @@ package com.devinotele.devinosdk.sdk;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
+import retrofit2.HttpException;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

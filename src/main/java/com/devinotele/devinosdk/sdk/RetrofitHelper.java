@@ -1,6 +1,5 @@
 package com.devinotele.devinosdk.sdk;
 
-
 import android.annotation.SuppressLint;
 import android.os.Build;
 
@@ -12,7 +11,6 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import io.reactivex.Single;
-
 
 class RetrofitHelper {
 
@@ -38,11 +36,14 @@ class RetrofitHelper {
         return devinoApi.registerUser(token, body);
     }
 
-
     Single<JsonObject> changeSubscription (Boolean subscribed) {
         HashMap<String, Object> body = getGenericBody();
         body.put("subscribed", subscribed);
         return devinoApi.subscription(token, body);
+    }
+
+    Single<JsonObject> getSubscriptionStatus() {
+        return devinoApi.getSubscriptionStatus(token, applicationId);
     }
 
     Single<JsonObject> appStarted(Boolean subscribed, String appVersion) {
@@ -99,6 +100,4 @@ class RetrofitHelper {
         body.put("language", Locale.getDefault().getISO3Language().substring(0, 2));
         return body;
     }
-
-
 }
