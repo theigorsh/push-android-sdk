@@ -22,7 +22,7 @@ class RetrofitClientInstance {
                 Request original = chain.request();
 
                 Request request = original.newBuilder()
-                        .header("Authorization", apiKey)
+                        .header("x-api-key", apiKey)
                         .header("Content-Type", "application/json")
                         .method(original.method(), original.body())
                         .build();
