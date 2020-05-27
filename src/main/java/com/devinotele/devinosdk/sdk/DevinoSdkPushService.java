@@ -43,7 +43,7 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
             String icon = data.get("icon");
             String title = data.get("title");
             String body = data.get("body");
-
+            String action = data.get("action");
             String buttonsJson = data.get("buttons");
             Type listType = new TypeToken<List<PushButton>>() {
             }.getType();
@@ -53,7 +53,7 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
 
             boolean isSilent = "true".equalsIgnoreCase(data.get("silentPush"));
             if (!isSilent) {
-                showSimpleNotification(title, body, R.drawable.ic_grey_circle, icon, buttons, true, sound, pushId);
+                showSimpleNotification(title, body, R.drawable.ic_grey_circle, icon, buttons, true, sound, pushId, action);
             }
 
             DevinoSdk.getInstance().pushEvent(pushId, DevinoSdk.PushStatus.DELIVERED, null);
@@ -61,11 +61,15 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
 
     }
 
-    void showSimpleNotification(String title, String text, int smallIcon, String largeIcon, List<PushButton> buttons, Boolean bigPicture, Uri sound, String pushId) {
+    void showSimpleNotification(String title, String text, int smallIcon, String largeIcon, List<PushButton> buttons, Boolean bigPicture, Uri sound, String pushId, String action) {
 
         Intent broadcastIntent = new Intent(getApplicationContext(), DevinoPushReceiver.class);
-        broadcastIntent.putExtra(DevinoPushReceiver.KEY_DEEPLINK, DevinoPushReceiver.KEY_DEFAULT_ACTION);
         broadcastIntent.putExtra(DevinoPushReceiver.KEY_PUSH_ID, pushId);
+        if (action != null) {
+            broadcastIntent.putExtra(DevinoPushReceiver.KEY_DEEPLINK, action);
+        } else
+            broadcastIntent.putExtra(DevinoPushReceiver.KEY_DEEPLINK, DevinoPushReceiver.KEY_DEFAULT_ACTION);
+
 
         Intent deleteIntent = new Intent(getApplicationContext(), DevinoCancelReceiver.class);
         deleteIntent.putExtra(DevinoPushReceiver.KEY_PUSH_ID, pushId);

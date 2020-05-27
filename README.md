@@ -56,6 +56,13 @@ public class DevinoExampleApplication extends Application {
 }
 ```
 
+Also you can override default push action scheme and host.
+If not redefined, "devino://default-push-action" will be used.
+
+```
+DevinoSdk.getInstance().setDefaultDeepLinkAction("scheme", "host");
+```
+
 
 ### Get sdk logs
 
