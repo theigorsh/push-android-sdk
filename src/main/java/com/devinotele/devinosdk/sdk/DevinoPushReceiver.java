@@ -9,7 +9,7 @@ public class DevinoPushReceiver extends BroadcastReceiver {
 
     static final String KEY_DEEPLINK = "deepLink";
     static final String KEY_PICTURE = "picture";
-    static final String KEY_DEFAULT_ACTION = "devino://default-push-action";
+    static String KEY_DEFAULT_ACTION = "devino://default-push-action";
     static final String KEY_PUSH_ID = "pushId";
 
 

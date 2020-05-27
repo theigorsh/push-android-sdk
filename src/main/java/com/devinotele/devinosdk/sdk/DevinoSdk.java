@@ -13,11 +13,11 @@ import java.util.HashMap;
 import io.reactivex.Observable;
 
 /**
-* Main library class.
+ * Main library class.
  * Init this class properly
  *
  * Get instance of a this class via DevinoSdk.getInstance()
-* */
+ * */
 @SuppressWarnings("unused")
 public class DevinoSdk {
 
@@ -235,6 +235,13 @@ public class DevinoSdk {
      * */
     public void stop() {
         BaseUC.unsubscribeAll();
+    }
+
+    /**
+     * Set default deep link for notification
+     */
+    public void setDefaultDeepLinkAction(String scheme, String host) {
+        DevinoPushReceiver.KEY_DEFAULT_ACTION = scheme + "://" + host;
     }
 
     void hideNotification(Context context) {
