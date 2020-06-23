@@ -3,7 +3,8 @@ package com.devinotele.devinosdk.sdk;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
-import android.support.v4.app.NotificationManagerCompat;
+
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.JsonObject;
