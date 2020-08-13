@@ -135,7 +135,7 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
         }
     }
 
-    class PushButton {
+    protected class PushButton {
 
         @SerializedName("text")
         private String text;
