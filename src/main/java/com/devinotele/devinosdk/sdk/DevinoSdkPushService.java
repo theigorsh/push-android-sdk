@@ -62,7 +62,7 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
 
     }
 
-    void showSimpleNotification(String title, String text, int smallIcon, String largeIcon, List<PushButton> buttons, Boolean bigPicture, Uri sound, String pushId, String action) {
+    public void showSimpleNotification(String title, String text, int smallIcon, String largeIcon, List<PushButton> buttons, Boolean bigPicture, Uri sound, String pushId, String action) {
 
         Intent broadcastIntent = new Intent(getApplicationContext(), DevinoPushReceiver.class);
         broadcastIntent.putExtra(DevinoPushReceiver.KEY_PUSH_ID, pushId);
