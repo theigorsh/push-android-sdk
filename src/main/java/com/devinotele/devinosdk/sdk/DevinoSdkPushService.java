@@ -29,6 +29,7 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
 
     Gson gson = new Gson();
     private String channelId = "devino_push";
+    private final int EXPANDED_TEXT_LENGTH = 49;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -101,6 +102,11 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
                     builder.addAction(R.drawable.ic_grey_circle, button.text, pendingIntent);
                 }
             }
+        }
+
+        if (text.length() >= EXPANDED_TEXT_LENGTH) {
+            builder.setStyle(new NotificationCompat.BigTextStyle()
+                    .bigText(text));
         }
 
         if (largeIcon != null) {
