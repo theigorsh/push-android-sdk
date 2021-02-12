@@ -36,6 +36,7 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
     @DrawableRes
     static Integer defaultNotificationIcon = R.drawable.ic_grey_circle;
 
+    private static final int RESOURCE_NOT_FOUND = 0;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -155,8 +156,10 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
     private Integer getIconDrawableId(Context context, String name){
         Resources resources = context.getResources();
         try {
-            return resources.getIdentifier(name, "drawable",
+            int resourceId = resources.getIdentifier(name, "drawable",
                     context.getPackageName());
+            if(resourceId == RESOURCE_NOT_FOUND) return defaultNotificationIcon;
+            else return resourceId;
         } catch (Exception ex) {
             return defaultNotificationIcon;
         }
