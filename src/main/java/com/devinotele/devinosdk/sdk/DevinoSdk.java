@@ -245,6 +245,13 @@ public class DevinoSdk {
         DevinoPushReceiver.KEY_DEFAULT_ACTION = scheme + "://" + host;
     }
 
+    /**
+     * Set default small icon for notification
+     */
+    public void setDefaultNotificationIcon(int icon){
+        DevinoSdkPushService.defaultNotificationIcon = icon;
+    }
+
     void hideNotification(Context context) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         notificationManager.cancelAll();
