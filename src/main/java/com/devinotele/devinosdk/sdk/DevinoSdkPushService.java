@@ -137,8 +137,10 @@ public class DevinoSdkPushService extends FirebaseMessagingService {
 
     private void playRingtone(Uri customSound) {
         Uri notificationSound = customSound != null ? customSound : RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notificationSound);
-        r.play();
+        Ringtone ringtone = RingtoneManager.getRingtone(getApplicationContext(), notificationSound);
+        if(ringtone != null) {
+            ringtone.play();
+        }
     }
 
     private void createNotificationChannel() {
